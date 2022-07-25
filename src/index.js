@@ -1,16 +1,20 @@
 import React from 'react';
 // import ReactDOM from 'react-dom/client';
 import { render } from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+
+import App from './App';
+import { UserProvider } from './contexts/user.context';
 
 import './index.scss';
-import App from './App';
-import { BrowserRouter } from 'react-router-dom';
 
 const rootElement = document.getElementById('root');
 render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <UserProvider>
+        <App />
+      </UserProvider>
     </BrowserRouter>
   </React.StrictMode>,
   rootElement
