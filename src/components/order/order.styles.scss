@@ -1,0 +1,36 @@
+.order-container {
+  margin: 10px 5px;
+  padding: 20px 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
+  color: #222831;
+
+  .order-heading {
+    text-align: center;
+    margin: 0;
+  }
+  .order-details {
+    width: 240px;
+    text-align: center;
+
+    td {
+      padding-top: 5px;
+    }
+  }
+
+  .bold {
+    font-weight: 500;
+  }
+
+  .blue {
+    color: #5dade2;
+  }
+
+  // .order-status {
+  //   color: #5dade2;
+  //   transition: all 0.3s ease;
+
+  //   &:hover {
+  //     color: #222831;
+  //   }
+  // }
+}

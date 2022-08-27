@@ -1,8 +1,8 @@
-import './button.styles.scss';
+import "./button.styles.scss";
 
 const BUTTON_TYPE_CLASSES = {
-  google: 'google-sign-in',
-  inverted: 'inverted',
+  google: "google-sign-in",
+  inverted: "inverted",
 };
 
 const Button = ({ children, buttonType, ...otherProps }) => {
@@ -11,6 +11,11 @@ const Button = ({ children, buttonType, ...otherProps }) => {
       className={`button-container ${BUTTON_TYPE_CLASSES[buttonType]}`}
       {...otherProps}
     >
+      {buttonType === "google" ? (
+        <i className="google-icon fa-brands fa-google"></i>
+      ) : (
+        <span></span>
+      )}
       {children}
     </button>
   );

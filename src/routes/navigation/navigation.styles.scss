@@ -8,11 +8,19 @@
   .logo-container {
     height: 100%;
     width: 70px;
-    padding: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 10px;
+
+    @media screen and (max-width: 800px) {
+      width: 45px;
+      padding: 0;
+    }
   }
 
   .nav-links-container {
-    width: 50%;
+    width: 80%;
     height: 100%;
     display: flex;
     align-items: center;
