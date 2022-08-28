@@ -17,6 +17,10 @@
       width: 45px;
       padding: 0;
     }
+
+    @media screen and (max-width: 525px) {
+      width: 30px;
+    }
   }
 
   .nav-links-container {
@@ -26,9 +30,18 @@
     align-items: center;
     justify-content: flex-end;
 
+    @media screen and (max-width: 525px) {
+      width: 90%;
+    }
+
     .nav-link {
       padding: 10px 15px;
       cursor: pointer;
+
+      @media screen and (max-width: 525px) {
+        padding: 10px 7px;
+        font-size: 12px;
+      }
     }
   }
 }

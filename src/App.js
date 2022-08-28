@@ -8,7 +8,6 @@ import YourOrders from "./routes/your-orders/your-orders.component";
 import Register from "./routes/register/register.component";
 import Login from "./routes/login/login.component";
 import Admin from "./routes/admin/admin.component";
-import PaymentForm from "./routes/payment/payment-form.component";
 
 const App = () => {
   return (
@@ -21,7 +20,6 @@ const App = () => {
         <Route path="shop/*" element={<Shop />} />
         <Route path="checkout" element={<Checkout />} />
         <Route path="your-orders/*" element={<YourOrders />} />
-        <Route path="payment" element={<PaymentForm />} />
       </Route>
     </Routes>
   );

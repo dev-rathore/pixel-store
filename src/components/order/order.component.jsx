@@ -4,9 +4,9 @@ import "./order.styles.scss";
 const Order = ({ orderId, orderDetails }) => {
   const { deliveryAddress, orderStatus, totalItems, totalPrice, placedOn } =
     orderDetails;
-  const placedOnText = `${placedOn.toDate().getDate()}/${placedOn
-    .toDate()
-    .getMonth()}/${placedOn.toDate().getFullYear()} at ${placedOn
+  const placedOnText = `${placedOn.toDate().getDate()}/${
+    placedOn.toDate().getMonth() + 1
+  }/${placedOn.toDate().getFullYear()} at ${placedOn
     .toDate()
     .getHours()}:${placedOn.toDate().getMinutes()}`;
 

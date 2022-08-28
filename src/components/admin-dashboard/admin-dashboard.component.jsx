@@ -9,12 +9,12 @@ const AdminDashboard = () => {
   const handleSubmit = (id, status) => {
     switch (status) {
       case "Order Placed":
-        updateOrderStatus(id, "Payment Done");
+        updateOrderStatus(id, "Preparing To Dispatch");
         break;
-      case "Payment Done":
-        updateOrderStatus(id, "Shipped");
+      case "Preparing To Dispatch":
+        updateOrderStatus(id, "Dispatched");
         break;
-      case "Shipped":
+      case "Dispatched":
         updateOrderStatus(id, "Out For Delivery");
         break;
       case "Out For Delivery":
