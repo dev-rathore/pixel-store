@@ -12,8 +12,8 @@
 /build
 
 .env
-admin.txt
-Workflow.txt
+/admin.txt
+/Workflow.txt
 
 
 # misc
