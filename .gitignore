@@ -12,9 +12,6 @@
 /build
 
 .env
-.admin.txt
-.Workflow.txt
-
 
 # misc
 .DS_Store
