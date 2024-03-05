@@ -75,6 +75,14 @@ const SignUpForm = () => {
           theme: "sunset",
           timeout: 5000,
         }).show();
+      } else if (error.code === "auth/weak-password") {
+        new Noty({
+          type: "warning",
+          text: `<i class="fa-solid fa-circle-exclamation" style="margin-right: 8px"></i> Password should be at least 6 characters`,
+          layout: "topCenter",
+          theme: "sunset",
+          timeout: 5000,
+        }).show();
       } else {
         new Noty({
           type: "error",
