@@ -227,7 +227,7 @@ export const createUserDocumentFromAuth = async (
   const userDocRef = doc(db, "users", userAuth.uid);
 
   // getDoc() is used to get a specific document
-  const userSnapshot = await getDoc(userDocRef);
+  const userSnapshot = await getDoc(userDocRef); // Fetch user data snapshot
 
   // If user data doesn't exists
   if (!userSnapshot.exists()) {
@@ -244,6 +244,10 @@ export const createUserDocumentFromAuth = async (
         cartItems: [],
         ...additionalInformation,
       });
+
+      const newUserSnapshot = await getDoc(userDocRef);
+
+      return newUserSnapshot;
     } catch (error) {
       console.log("error creating the user", error.message);
     }
