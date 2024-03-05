@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import Noty from "noty";
 
 import Button from "../button/button.component";
 import FormInput from "../form-input/form-input.component";
@@ -10,12 +11,11 @@ import { signInAuthUserWithEmailAndPassword } from "../../utils/firebase/firebas
 const defaultFormFields = {
   email: "",
   password: "",
-  error: "",
 };
 
 const AdminLogin = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
-  const { email, password, error } = formFields;
+  const { email, password } = formFields;
   const navigate = useNavigate();
 
   const resetFormFields = () => {
@@ -34,10 +34,22 @@ const AdminLogin = () => {
     } catch (error) {
       switch (error.code) {
         case "auth/wrong-password":
-          setFormFields({ ...formFields, error: "Wrong credentials" });
+          new Noty({
+            type: "error",
+            text: `<i class="fa-solid fa-circle-exclamation" style="margin-right: 8px"></i> Wrong credentials`,
+            layout: "topCenter",
+            theme: "sunset",
+            timeout: 5000,
+          }).show();
           break;
         case "auth/user-not-found":
-          setFormFields({ ...formFields, error: "Wrong Details" });
+          new Noty({
+            type: "error",
+            text: `<i class="fa-solid fa-circle-exclamation" style="margin-right: 8px"></i> Wrong credentials`,
+            layout: "topCenter",
+            theme: "sunset",
+            timeout: 5000,
+          }).show();
           break;
         default:
           console.log(error);
@@ -55,13 +67,9 @@ const AdminLogin = () => {
     <div className="admin-login">
       <div className="admin-login-container">
         <h2>Admin Login</h2>
-        {error === "" ? (
-          <p></p>
-        ) : (
-          <p style={{ color: "red", textAlign: "center" }}>{error}</p>
-        )}
         <form onSubmit={handleSubmit}>
           <FormInput
+            autoComplete="off"
             label="Email"
             type="email"
             required
