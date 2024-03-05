@@ -4,7 +4,7 @@ import { OrdersContext } from "../../contexts/orders.context";
 import { UserContext } from "../../contexts/user.context";
 
 import "./admin-dashboard.styles.scss";
-import Loader from "../loader/loader.component";
+import LoaderContainer from "../loader/loader-container.component";
 
 const AdminDashboard = () => {
   const { ordersMap, updateOrderStatus } = useContext(OrdersContext);
@@ -37,7 +37,7 @@ const AdminDashboard = () => {
   }, []);
 
   if (isLoading) {
-    return <Loader />;
+    return <LoaderContainer />;
   }
 
   return (

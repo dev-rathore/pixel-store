@@ -21,6 +21,7 @@ const PaymentForm = ({ userId, userName, cartItems, cartTotal }) => {
   const [orderFields, setOrderFields] = useState(defaultOrderFields); //
   const { deliveryAddress } = orderFields; //
   const navigate = useNavigate(); //
+  const [isProcessing, setIsProcessing] = useState(false); //
 
   let orderDetails = {
     userId,
@@ -45,6 +46,7 @@ const PaymentForm = ({ userId, userName, cartItems, cartTotal }) => {
 
   const paymentHandler = async (event) => {
     event.preventDefault();
+    setIsProcessing(true);
 
     if (!deliveryAddress) {
       new Noty({
@@ -58,6 +60,7 @@ const PaymentForm = ({ userId, userName, cartItems, cartTotal }) => {
     }
 
     if (!stripe || !elements) {
+      setIsProcessing(false);
       return;
     }
 
@@ -87,7 +90,6 @@ const PaymentForm = ({ userId, userName, cartItems, cartTotal }) => {
     });
 
     if (paymentResult.error) {
-      console.log(paymentResult);
       new Noty({
         type: "error",
         text: `<i class="fa-solid fa-circle-exclamation" style="margin-right: 8px"></i> ${paymentResult.error.message}`,
@@ -115,6 +117,8 @@ const PaymentForm = ({ userId, userName, cartItems, cartTotal }) => {
         }
       }
     }
+
+    setIsProcessing(false);
   };
 
   return (
@@ -131,7 +135,7 @@ const PaymentForm = ({ userId, userName, cartItems, cartTotal }) => {
         />
         <h3>Credit Card Payment : </h3>
         <CardElement className="card-element" />
-        <Button>Place Order</Button>
+        <Button isLoading={isProcessing}>Place Order</Button>
       </form>
     </div>
   );

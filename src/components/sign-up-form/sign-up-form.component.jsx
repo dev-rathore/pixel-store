@@ -25,6 +25,7 @@ const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
   const navigate = useNavigate();
+  const [isProcessing, setIsProcessing] = useState(false);
 
   // const { setCurrentUser } = useContext(UserContext);
 
@@ -34,6 +35,7 @@ const SignUpForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsProcessing(true);
 
     if (password !== confirmPassword) {
       new Noty({
@@ -93,6 +95,8 @@ const SignUpForm = () => {
         }).show();
       }
     }
+
+    setIsProcessing(false);
   };
 
   const handleChange = (event) => {
@@ -142,7 +146,7 @@ const SignUpForm = () => {
           name="confirmPassword"
           value={confirmPassword}
         />
-        <Button type="submit">Sign Up</Button>
+        <Button type="submit" isLoading={isProcessing}>Sign Up</Button>
       </form>
     </div>
   );

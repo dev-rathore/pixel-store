@@ -1,3 +1,4 @@
+import Loader from "../loader/loader.component";
 import "./button.styles.scss";
 
 const BUTTON_TYPE_CLASSES = {
@@ -5,7 +6,7 @@ const BUTTON_TYPE_CLASSES = {
   inverted: "inverted",
 };
 
-const Button = ({ children, buttonType, ...otherProps }) => {
+const Button = ({ children, buttonType, isLoading = false, ...otherProps }) => {
   return (
     <button
       className={`button-container ${BUTTON_TYPE_CLASSES[buttonType]}`}
@@ -16,7 +17,7 @@ const Button = ({ children, buttonType, ...otherProps }) => {
       ) : (
         <span></span>
       )}
-      {children}
+      {isLoading ? <Loader size="small"/> : children}
     </button>
   );
 };

@@ -24,6 +24,7 @@ const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
   const navigate = useNavigate();
+  const [isProcessing, setIsProcessing] = useState(false);
 
   // const { setCurrentUser } = useContext(UserContext);
 
@@ -52,6 +53,7 @@ const SignInForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsProcessing(true);
 
     try {
       // const { user } = await signInAuthUserWithEmailAndPassword(email, password);
@@ -95,6 +97,8 @@ const SignInForm = () => {
           }).show();
       }
     }
+
+    setIsProcessing(false);
   };
 
   const handleChange = (event) => {
@@ -128,7 +132,7 @@ const SignInForm = () => {
         />
 
         <div className="buttons-container">
-          <Button type="submit">Sign In</Button>
+          <Button type="submit" isLoading={isProcessing}>Sign In</Button>
           <Button type="button" buttonType="google" onClick={signInWithGoogle}>
             Sign in with Google
           </Button>

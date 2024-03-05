@@ -2,11 +2,11 @@ import React from 'react';
 
 import './loader.styles.scss';
 
-const Loader = () => {
+const Loader = ({
+  size = "medium",
+}) => {
   return (
-    <div className="loader-container">
-      <div className="loader" />
-    </div>
+    <div className={`loader-${size}`} />
   );
 };
 
