@@ -14,22 +14,24 @@ const Checkout = () => {
 
   return (
     <>
-      <table className="checkout-container">
-        <thead>
-          <tr className="checkout-header">
-            <th className="header-block">Product</th>
-            <th className="header-block">Description</th>
-            <th className="header-block">Quantity</th>
-            <th className="header-block">Price</th>
-            <th className="header-block">Remove</th>
-          </tr>
-        </thead>
-        <tbody>
-          {cartItems.map((cartItem) => (
-            <CheckoutItem key={cartItem.id} cartItem={cartItem} />
-          ))}
-        </tbody>
-      </table>
+      <div className="checkout-table-container">
+        <table className="checkout-table checkout-container">
+          <thead>
+            <tr className="checkout-header">
+              <th className="header-block">Product</th>
+              <th className="header-block">Description</th>
+              <th className="header-block">Quantity</th>
+              <th className="header-block">Price</th>
+              <th className="header-block">Remove</th>
+            </tr>
+          </thead>
+          <tbody>
+            {cartItems.map((cartItem) => (
+              <CheckoutItem key={cartItem.id} cartItem={cartItem} />
+            ))}
+          </tbody>
+        </table>
+      </div>
       {currentUser && userData.role === "user" ? (
         <>
           {cartItems.length !== 0 ? (
