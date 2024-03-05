@@ -84,7 +84,7 @@ const AdminDashboard = () => {
             })}
           </tbody>
         </table>
-      </div> : <Navigate to="/sign-in" />}
+      </div> : <Navigate to="/" />}
     </>
   );
 };
