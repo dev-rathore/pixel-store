@@ -17,7 +17,7 @@ const CheckoutItem = ({ cartItem }) => {
 
   const clearItemHandler = () => {
     new Noty({
-      type: "success",
+      type: "warning",
       text: `<i class="fa-solid fa-trash" style="margin-right: 8px"></i> Product Removed`,
       layout: "topCenter",
       theme: "sunset",
@@ -38,7 +38,7 @@ const CheckoutItem = ({ cartItem }) => {
 
   const removeItemHandler = () => {
     new Noty({
-      type: "information",
+      type: "info",
       text: `<i class="fa-solid fa-down-long" style="margin-right: 8px"></i> Quantity Decreased`,
       layout: "topCenter",
       theme: "sunset",

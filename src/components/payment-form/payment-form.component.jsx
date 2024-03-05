@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../contexts/cart.context";
 import { OrdersContext } from "../../contexts/orders.context";
 
+import Noty from "noty";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import Button from "../button/button.component";
 
@@ -46,7 +47,13 @@ const PaymentForm = ({ userId, userName, cartItems, cartTotal }) => {
     event.preventDefault();
 
     if (!deliveryAddress) {
-      alert("Enter Delivery Address");
+      new Noty({
+        type: "error",
+        text: `<i class="fa-solid fa-circle-exclamation" style="margin-right: 8px"></i> Please Enter Delivery Address`,
+        layout: "topCenter",
+        theme: "sunset",
+        timeout: 5000,
+      }).show();
       return;
     }
 
@@ -80,11 +87,23 @@ const PaymentForm = ({ userId, userName, cartItems, cartTotal }) => {
     });
 
     if (paymentResult.error) {
-      // console.log(paymentResult);
-      alert(paymentResult.error.message);
+      console.log(paymentResult);
+      new Noty({
+        type: "error",
+        text: `<i class="fa-solid fa-circle-exclamation" style="margin-right: 8px"></i> ${paymentResult.error.message}`,
+        layout: "topCenter",
+        theme: "sunset",
+        timeout: 5000,
+      }).show();
     } else {
       if (paymentResult.paymentIntent.status === "succeeded") {
-        alert("Payment Successful");
+        new Noty({
+          type: "success",
+          text: `<i class="fa-solid fa-circle-check" style="margin-right: 8px"></i> Payment Successful`,
+          layout: "topCenter",
+          theme: "sunset",
+          timeout: 5000,
+        }).show();
 
         try {
           addOrder(orderDetails); // After Successful Payment, Order added into Orders collection

@@ -1,8 +1,5 @@
 import Noty from "noty";
 
-import "noty/lib/noty.css";
-import "noty/lib/themes/sunset.css";
-
 import { useContext } from "react";
 import { UserContext } from "../../contexts/user.context";
 import { CartContext } from "../../contexts/cart.context";
@@ -17,8 +14,8 @@ const ProductCard = ({ product }) => {
   const addProductToCart = () => {
     if (currentUser && userData.role === "user") {
       new Noty({
-        type: "error",
-        text: `<i class="fa-solid fa-circle-check" style="margin-right: 8px"></i> Added In The Cart`,
+        type: "success",
+        text: `<i class="fa-solid fa-circle-check" style="margin-right: 8px"></i> Added Item in the Cart`,
         layout: "topCenter",
         theme: "sunset",
         timeout: 3000,
@@ -27,7 +24,7 @@ const ProductCard = ({ product }) => {
     } else {
       new Noty({
         type: "warning",
-        text: `<i class="fa-solid fa-circle-exclamation" style="margin-right: 8px"></i> Please Login as user to add item in your cart`,
+        text: `<i class="fa-solid fa-circle-exclamation" style="margin-right: 8px"></i> Please Login to add items in your cart`,
         layout: "topCenter",
         theme: "sunset",
         timeout: 3000,

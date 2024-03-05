@@ -1,5 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 
+import "noty/lib/noty.css";
+import "noty/lib/themes/sunset.css";
+
 import Admin from "./routes/admin/admin.component";
 import Checkout from "./routes/checkout/checkout.component";
 import Home from "./routes/home/home.component";

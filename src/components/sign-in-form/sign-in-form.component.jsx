@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import Noty from "noty";
 
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
@@ -55,13 +56,31 @@ const SignInForm = () => {
     } catch (error) {
       switch (error.code) {
         case "auth/wrong-password":
-          alert("incorrect password for email");
+          new Noty({
+            type: "error",
+            text: `<i class="fa-solid fa-circle-exclamation" style="margin-right: 8px"></i> Incorrect password`,
+            layout: "topCenter",
+            theme: "sunset",
+            timeout: 5000,
+          }).show();
           break;
         case "auth/user-not-found":
-          alert("no user associated with this email");
+          new Noty({
+            type: "error",
+            text: `<i class="fa-solid fa-circle-exclamation" style="margin-right: 8px"></i> No user found with this email`,
+            layout: "topCenter",
+            theme: "sunset",
+            timeout: 5000,
+          }).show();
           break;
         default:
-          console.log(error);
+          new Noty({
+            type: "error",
+            text: `<i class="fa-solid fa-circle-exclamation" style="margin-right: 8px"></i> ${error.message}`,
+            layout: "topCenter",
+            theme: "sunset",
+            timeout: 5000,
+          }).show();
       }
     }
   };
@@ -78,6 +97,7 @@ const SignInForm = () => {
       <span>Sign in with your email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput
+          autoComplete="off"
           label="Email"
           type="email"
           required

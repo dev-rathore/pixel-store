@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import Noty from "noty";
 
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
@@ -35,7 +36,13 @@ const SignUpForm = () => {
     event.preventDefault();
 
     if (password !== confirmPassword) {
-      alert("passwords do not match");
+      new Noty({
+        type: "warning",
+        text: `<i class="fa-solid fa-circle-exclamation" style="margin-right: 8px"></i> Passwords do not match`,
+        layout: "topCenter",
+        theme: "sunset",
+        timeout: 5000,
+      }).show();
       return;
     }
 
@@ -52,9 +59,21 @@ const SignUpForm = () => {
       // setCurrentUser(user);
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
-        alert("Cannot create user, email already in use");
+        new Noty({
+          type: "error",
+          text: `<i class="fa-solid fa-circle-exclamation" style="margin-right: 8px"></i> User already exist with this email, Try login instead`,
+          layout: "topCenter",
+          theme: "sunset",
+          timeout: 5000,
+        }).show();
       } else {
-        console.log("user creation encountered an error", error);
+        new Noty({
+          type: "error",
+          text: `<i class="fa-solid fa-circle-exclamation" style="margin-right: 8px"></i> User creation encountered an error: ${error.message}`,
+          layout: "topCenter",
+          theme: "sunset",
+          timeout: 5000,
+        }).show();
       }
     }
   };
@@ -80,6 +99,7 @@ const SignUpForm = () => {
         />
 
         <FormInput
+          autoComplete="off"
           label="Email"
           type="email"
           required
