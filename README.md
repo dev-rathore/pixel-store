@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Node version - 18.19.1
 
-Create .env file and add your API keys for `REACT_APP_STRIPE_PUBLISHABLE_KEY`, `STRIPE_SECRET_KEY`, `FIREBASE_API_KEY`, `FIREBASE_MESSAGING_SENDER_ID`, and `FIREBASE_APP_ID`
+Create .env file and add your API keys for `REACT_APP_STRIPE_PUBLISHABLE_KEY`, `STRIPE_SECRET_KEY`, `REACT_APP_FIREBASE_API_KEY`, `REACT_APP_FIREBASE_MESSAGING_SENDER_ID`, and `REACT_APP_FIREBASE_APP_ID`
 
 ## Available Scripts
 
