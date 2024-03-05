@@ -14,31 +14,34 @@ import "./navigation.styles.scss";
 
 const Navigation = () => {
   const { currentUser, userData } = useContext(UserContext);
-  const { isCartOpen } = useContext(CartContext);
+  const { isCartOpen, setIsCartOpen } = useContext(CartContext);
   const navigate = useNavigate();
 
   const signOutHandler = async () => {
     await signOutUser();
+    setIsCartOpen(false);
     navigate("/");
   };
 
+  const closeCart = () => setIsCartOpen(false);
+
   return (
     <div className="navigation">
-      <Link className="logo-container" to="/">
+      <Link className="logo-container" to="/" onClick={closeCart}>
         <PixelStoreLogo className="logo" />
       </Link>
       <div className="nav-links-container">
         {currentUser && userData.role === "admin" ? (
-          <Link className="nav-link" to="/admin/dashboard">
+          <Link className="nav-link" to="/admin/dashboard" onClick={closeCart}>
             DASHBOARD
           </Link>
         ) : (
-          <Link className="nav-link" to="/shop">
+          <Link className="nav-link" to="/shop" onClick={closeCart}>
             SHOP
           </Link>
         )}
         {currentUser && userData.role === "user" ? (
-          <Link className="nav-link" to="/your-orders">
+          <Link className="nav-link" to="/your-orders" onClick={closeCart}>
             YOUR ORDERS
           </Link>
         ) : (
@@ -50,10 +53,10 @@ const Navigation = () => {
           </span>
         ) : (
           <>
-            <Link className="nav-link" to="/sign-up">
+            <Link className="nav-link" to="/sign-up" onClick={closeCart}>
               REGISTER
             </Link>
-            <Link className="nav-link" to="/sign-in">
+            <Link className="nav-link" to="/sign-in" onClick={closeCart}>
               LOGIN
             </Link>
           </>
