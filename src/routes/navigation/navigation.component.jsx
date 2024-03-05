@@ -14,12 +14,22 @@ import { signOutUser } from "../../utils/firebase/firebase.utils";
 import "./navigation.styles.scss";
 
 const Navigation = () => {
-  const { currentUser, userData } = useContext(UserContext);
-  const { isCartOpen, setIsCartOpen } = useContext(CartContext);
+  const {
+    currentUser,
+    setCurrentUser,
+    setUserData,
+    userData,
+  } = useContext(UserContext);
+  const {
+    isCartOpen,
+    setIsCartOpen,
+  } = useContext(CartContext);
   const navigate = useNavigate();
 
   const signOutHandler = async () => {
     await signOutUser();
+    setCurrentUser(null);
+    setUserData(null);
     setIsCartOpen(false);
     navigate("/");
 
