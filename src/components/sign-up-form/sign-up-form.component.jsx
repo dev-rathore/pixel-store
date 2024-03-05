@@ -45,6 +45,8 @@ const SignUpForm = () => {
         theme: "sunset",
         timeout: 5000,
       }).show();
+
+      setIsProcessing(false);
       return;
     }
 
