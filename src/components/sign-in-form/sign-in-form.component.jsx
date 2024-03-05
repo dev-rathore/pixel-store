@@ -58,7 +58,6 @@ const SignInForm = () => {
     try {
       // const { user } = await signInAuthUserWithEmailAndPassword(email, password);
       // console.log(user);
-      // setCurrentUser(user);
 
       await signInAuthUserWithEmailAndPassword(email, password);
 
