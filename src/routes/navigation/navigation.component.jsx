@@ -1,5 +1,5 @@
-import { Fragment, useContext } from "react";
-import { Outlet, Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import CartIcon from "../../components/cart-icon/cart-icon.component";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
@@ -23,48 +23,45 @@ const Navigation = () => {
   };
 
   return (
-    <Fragment>
-      <div className="navigation">
-        <Link className="logo-container" to="/">
-          <PixelStoreLogo className="logo" />
-        </Link>
-        <div className="nav-links-container">
-          {currentUser && userData.role === "admin" ? (
-            <Link className="nav-link" to="/admin/dashboard">
-              DASHBOARD
+    <div className="navigation">
+      <Link className="logo-container" to="/">
+        <PixelStoreLogo className="logo" />
+      </Link>
+      <div className="nav-links-container">
+        {currentUser && userData.role === "admin" ? (
+          <Link className="nav-link" to="/admin/dashboard">
+            DASHBOARD
+          </Link>
+        ) : (
+          <Link className="nav-link" to="/shop">
+            SHOP
+          </Link>
+        )}
+        {currentUser && userData.role === "user" ? (
+          <Link className="nav-link" to="/your-orders">
+            YOUR ORDERS
+          </Link>
+        ) : (
+          <></>
+        )}
+        {currentUser ? (
+          <span className="nav-link" onClick={signOutHandler}>
+            SIGN OUT
+          </span>
+        ) : (
+          <>
+            <Link className="nav-link" to="/sign-up">
+              REGISTER
             </Link>
-          ) : (
-            <Link className="nav-link" to="/shop">
-              SHOP
+            <Link className="nav-link" to="/sign-in">
+              LOGIN
             </Link>
-          )}
-          {currentUser && userData.role === "user" ? (
-            <Link className="nav-link" to="/your-orders">
-              YOUR ORDERS
-            </Link>
-          ) : (
-            <></>
-          )}
-          {currentUser ? (
-            <span className="nav-link" onClick={signOutHandler}>
-              SIGN OUT
-            </span>
-          ) : (
-            <>
-              <Link className="nav-link" to="/sign-up">
-                REGISTER
-              </Link>
-              <Link className="nav-link" to="/sign-in">
-                LOGIN
-              </Link>
-            </>
-          )}
-          <CartIcon />
-        </div>
-        {isCartOpen && <CartDropdown />}
+          </>
+        )}
+        <CartIcon />
       </div>
-      <Outlet />
-    </Fragment>
+      {isCartOpen && <CartDropdown />}
+    </div>
   );
 };
 

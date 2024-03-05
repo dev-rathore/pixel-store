@@ -6,15 +6,11 @@ $primaryColor: #5dade2;
 
 body {
   margin: 0;
-  padding: 20px 40px;
+  padding: 0;
   color: #222831;
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  @media screen and (max-width: 400px) {
-    padding: 20px 20px;
-  }
 }
 
 a {

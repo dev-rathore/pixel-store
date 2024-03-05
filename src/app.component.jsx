@@ -1,18 +1,18 @@
 import { Routes, Route } from "react-router-dom";
 
-import Home from "./routes/home/home.component";
-import Navigation from "./routes/navigation/navigation.component";
-import Shop from "./routes/shop/shop.component";
-import Checkout from "./routes/checkout/checkout.component";
-import YourOrders from "./routes/your-orders/your-orders.component";
-import Register from "./routes/register/register.component";
-import Login from "./routes/login/login.component";
 import Admin from "./routes/admin/admin.component";
+import Checkout from "./routes/checkout/checkout.component";
+import Home from "./routes/home/home.component";
+import Login from "./routes/login/login.component";
+import PageLayout from "./routes/page-layout/page-layout.component";
+import Register from "./routes/register/register.component";
+import Shop from "./routes/shop/shop.component";
+import YourOrders from "./routes/your-orders/your-orders.component";
 
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<Navigation />}>
+      <Route path="/" element={<PageLayout />}>
         <Route index element={<Home />} />
         <Route path="sign-up" element={<Register />} />
         <Route path="sign-in" element={<Login />} />

@@ -1,0 +1,18 @@
+.page-layout {
+  padding: 20px 40px;
+
+  .page-layout-outer-container {    
+    display: flex;
+    justify-content: center;
+
+    .page-layout-inner-container {
+      flex-grow: 1;
+      max-width: 1400px;
+      min-height: 85vh;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    padding: 20px 20px;
+  }
+}
