@@ -39,7 +39,7 @@ export const CartProvider = ({ children }) => {
     } else {
       setCartItems([]);
     }
-  }, [currentUser]); // Run once only when the component mounts
+  }, [currentUser, userData?.role]); // Run once only when the component mounts
 
   useEffect(() => {
     const newCartIconCount = cartItems.reduce(

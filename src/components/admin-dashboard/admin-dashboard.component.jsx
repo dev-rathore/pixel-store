@@ -82,6 +82,7 @@ const AdminDashboard = () => {
                     </tr>
                   );
                 }
+                return null;
               })}
             </tbody>
           </table>

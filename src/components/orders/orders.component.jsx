@@ -18,6 +18,7 @@ const Orders = () => {
               <Order key={key} orderId={key} orderDetails={orderDetails} />
             );
           }
+          return null;
         })}
       </div>
     </div>
