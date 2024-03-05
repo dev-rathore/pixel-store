@@ -181,7 +181,7 @@ export const addOrderToOrdersCollection = async (
   const collectionRef = collection(db, "orders");
   try {
     const placedOn = new Date();
-    const docRef = await addDoc(collectionRef, {
+    await addDoc(collectionRef, {
       placedOn,
       ...additionalInformation,
     });
