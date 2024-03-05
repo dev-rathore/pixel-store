@@ -54,7 +54,7 @@ const Checkout = () => {
         <h2
           style={{
             textAlign: "center",
-            fontWeight: "400",
+            marginTop: "3rem",
             color: "#5dade2",
           }}
         >
