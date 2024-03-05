@@ -1,10 +1,15 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import { Navigate } from "react-router-dom";
 import { OrdersContext } from "../../contexts/orders.context";
+import { UserContext } from "../../contexts/user.context";
 
 import "./admin-dashboard.styles.scss";
+import Loader from "../loader/loader.component";
 
 const AdminDashboard = () => {
   const { ordersMap, updateOrderStatus } = useContext(OrdersContext);
+  const { currentUser, userData } = useContext(UserContext);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleSubmit = (id, status) => {
     switch (status) {
@@ -25,50 +30,62 @@ const AdminDashboard = () => {
     }
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  }, []);
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
-    <div className="table-responsive">
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Order Id</th>
-            <th>User Id</th>
-            <th>Delivery Address</th>
-            <th>Total Items</th>
-            <th>Total Price</th>
-            <th>Placed On</th>
-            <th>Order Status</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Object.keys(ordersMap).map((key) => {
-            const orderDetails = ordersMap[key];
-            if (orderDetails.orderStatus !== "Product Delivered") {
-              return (
-                <tr key={key}>
-                  <td>{key}</td>
-                  <td>{orderDetails.userId}</td>
-                  <td>{orderDetails.deliveryAddress}</td>
-                  <td>{orderDetails.totalItems.length}</td>
-                  <td>{orderDetails.totalPrice}</td>
-                  <td>Placed on</td>
-                  <td>{orderDetails.orderStatus}</td>
-                  <td>
-                    <button
-                      onClick={() => {
-                        handleSubmit(key, orderDetails.orderStatus);
-                      }}
-                    >
-                      Update
-                    </button>
-                  </td>
-                </tr>
-              );
-            }
-          })}
-        </tbody>
-      </table>
-    </div>
+    <>
+      {currentUser && userData.role === "admin" ? <div className="table-responsive">
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Order Id</th>
+              <th>User Id</th>
+              <th>Delivery Address</th>
+              <th>Total Items</th>
+              <th>Total Price</th>
+              <th>Placed On</th>
+              <th>Order Status</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.keys(ordersMap).map((key) => {
+              const orderDetails = ordersMap[key];
+              if (orderDetails.orderStatus !== "Product Delivered") {
+                return (
+                  <tr key={key}>
+                    <td>{key}</td>
+                    <td>{orderDetails.userId}</td>
+                    <td>{orderDetails.deliveryAddress}</td>
+                    <td>{orderDetails.totalItems.length}</td>
+                    <td>{orderDetails.totalPrice}</td>
+                    <td>Placed on</td>
+                    <td>{orderDetails.orderStatus}</td>
+                    <td>
+                      <button
+                        onClick={() => {
+                          handleSubmit(key, orderDetails.orderStatus);
+                        }}
+                      >
+                        Update
+                      </button>
+                    </td>
+                  </tr>
+                );
+              }
+            })}
+          </tbody>
+        </table>
+      </div> : <Navigate to="/sign-in" />}
+    </>
   );
 };
 
