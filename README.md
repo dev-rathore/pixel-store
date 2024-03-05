@@ -2,9 +2,19 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Prerequisites
+
+Node version - 18.19.1
+
+Create .env file and add your API keys for `REACT_APP_STRIPE_PUBLISHABLE_KEY`, `STRIPE_SECRET_KEY`, `FIREBASE_API_KEY`, `FIREBASE_MESSAGING_SENDER_ID`, and `FIREBASE_APP_ID`
+
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm install`
+
+Install the required packages with node version 18.19.1
 
 ### `npm start`
 

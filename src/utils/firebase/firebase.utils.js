@@ -26,12 +26,12 @@ import {
 
 // App's Firebase Project Configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDSjYLR7eSZCPfPfkRxNPUzT7O7wkKZDk0",
+  apiKey: process.env.FIREBASE_API_KEY,
   authDomain: "pixel-store-db.firebaseapp.com",
   projectId: "pixel-store-db",
   storageBucket: "pixel-store-db.appspot.com",
-  messagingSenderId: "409426944259",
-  appId: "1:409426944259:web:1871ce8781c0fe12af8936",
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.FIREBASE_APP_ID,
 };
 
 // Established a Connection
