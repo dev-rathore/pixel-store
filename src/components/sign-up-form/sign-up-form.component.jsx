@@ -56,6 +56,15 @@ const SignUpForm = () => {
       resetFormFields();
 
       navigate(`/`);
+
+      new Noty({
+        type: "success",
+        text: `<i class="fa-solid fa-circle-check" style="margin-right: 8px"></i> Registered Successfully, Happy Shopping :)`,
+        layout: "topCenter",
+        theme: "sunset",
+        timeout: 4000,
+      }).show();
+
       // setCurrentUser(user);
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {

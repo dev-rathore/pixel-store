@@ -39,7 +39,7 @@ const AdminLogin = () => {
             text: `<i class="fa-solid fa-circle-exclamation" style="margin-right: 8px"></i> Wrong credentials`,
             layout: "topCenter",
             theme: "sunset",
-            timeout: 5000,
+            timeout: 4000,
           }).show();
           break;
         case "auth/user-not-found":
@@ -48,7 +48,7 @@ const AdminLogin = () => {
             text: `<i class="fa-solid fa-circle-exclamation" style="margin-right: 8px"></i> Wrong credentials`,
             layout: "topCenter",
             theme: "sunset",
-            timeout: 5000,
+            timeout: 4000,
           }).show();
           break;
         default:

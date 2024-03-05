@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Noty from "noty";
 
 import CartIcon from "../../components/cart-icon/cart-icon.component";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
@@ -21,6 +22,14 @@ const Navigation = () => {
     await signOutUser();
     setIsCartOpen(false);
     navigate("/");
+
+    new Noty({
+      type: "success",
+      text: `<i class="fa-solid fa-circle-check" style="margin-right: 8px"></i> Signed out successfully, See you soon :)`,
+      layout: "topCenter",
+      theme: "sunset",
+      timeout: 4000,
+    }).show();
   };
 
   const closeCart = () => setIsCartOpen(false);
@@ -31,7 +40,7 @@ const Navigation = () => {
         <PixelStoreLogo className="logo" />
       </Link>
       <div className="nav-links-container">
-        {currentUser && userData.role === "admin" ? (
+        {currentUser && userData?.role === "admin" ? (
           <Link className="nav-link" to="/admin/dashboard" onClick={closeCart}>
             DASHBOARD
           </Link>

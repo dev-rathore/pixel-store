@@ -27,6 +27,16 @@ const SignInForm = () => {
 
   // const { setCurrentUser } = useContext(UserContext);
 
+  const notyUserOnSuccessfulSignIn = () => {
+    new Noty({
+      type: "success",
+      text: `<i class="fa-solid fa-circle-check" style="margin-right: 8px"></i> Signed in successfully, Happy Shopping :)`,
+      layout: "topCenter",
+      theme: "sunset",
+      timeout: 4000,
+    }).show();
+  };
+
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };
@@ -53,6 +63,8 @@ const SignInForm = () => {
       resetFormFields();
 
       navigate(`/`);
+
+      notyUserOnSuccessfulSignIn();
     } catch (error) {
       switch (error.code) {
         case "auth/wrong-password":
